@@ -10,13 +10,11 @@ import { jwtConstants } from './constants';
 import { APP_GUARD } from '@nestjs/core';
 import { AuthGuard } from './auth.guard';
 import { AppCacheModule } from 'src/cache/cache.module';
-import { KafkaModule } from 'src/kafka/kafka.module';
 
 @Module({
   imports: [
     UsersModule,
     AppCacheModule,
-    KafkaModule,
     TypeOrmModule.forFeature([User]),
     JwtModule.register({
       global: true,

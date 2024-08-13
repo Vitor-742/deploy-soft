@@ -4,7 +4,7 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
 import { EntityManager, Repository } from 'typeorm';
-import { ProducerService } from 'src/kafka/producer.service';
+// import { ProducerService } from 'src/kafka/producer.service';
 
 @Injectable()
 export class UsersService {
@@ -12,19 +12,19 @@ export class UsersService {
     @InjectRepository(User)
     private readonly usersRepository: Repository<User>,
     private readonly entityManager: EntityManager,
-    private readonly producerService: ProducerService,
+    // private readonly producerService: ProducerService,
 
 
   ) {}
   
   async create(createUserDto: CreateUserDto) {
 
-    this.producerService.produce({
-      topic: 'nestjs',
-      messages: [{
-        value: "Kafka log: creating new User"
-      }]
-    })
+    // this.producerService.produce({
+    //   topic: 'nestjs',
+    //   messages: [{
+    //     value: "Kafka log: creating new User"
+    //   }]
+    // })
 
     const new_user = new User(createUserDto);
 
@@ -37,12 +37,12 @@ export class UsersService {
   
   updateOne(id: number, updateUserDto: UpdateUserDto) {
 
-    this.producerService.produce({
-      topic: 'nestjs',
-      messages: [{
-        value: "Kafka log: Updating already created user"
-      }]
-    })
+    // this.producerService.produce({
+    //   topic: 'nestjs',
+    //   messages: [{
+    //     value: "Kafka log: Updating already created user"
+    //   }]
+    // })
 
     return this.usersRepository.update(id, updateUserDto);
   }

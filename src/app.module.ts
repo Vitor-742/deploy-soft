@@ -4,12 +4,12 @@ import { DatabaseModule } from './database/database.module';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { AppCacheModule } from './cache/cache.module';
-import { KafkaModule } from './kafka/kafka.module';
-import { LogConsumer } from './kafka/log.consumer';
+// import { KafkaModule } from './kafka/kafka.module';
+// import { LogConsumer } from './kafka/log.consumer';
 
 @Module({
-  imports: [DatabaseModule, UsersModule, AuthModule, AppCacheModule, KafkaModule],
+  imports: [DatabaseModule, UsersModule, AuthModule, AppCacheModule],
   controllers: [AppController],
-  providers: [LogConsumer],
+  providers: [],
 })
 export class AppModule {}
